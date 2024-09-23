@@ -16,7 +16,7 @@ section{
 
     height: 100vh;
 
-    background-color: beige;
+    background-color: rgb(82, 82, 41);
 }
 
 .calcBody{
@@ -30,76 +30,76 @@ section{
 
     border:none;
     border-radius: 5px;
+    box-shadow: 0 0 5px #ffffff;
 
     padding: 10px;
     cursor: pointer;
 
-    box-shadow: 0 0 3px #8A9A5B; box-shadow: 0 0 11px #8A9A5B;
+    background-color: beige; 
 }
 
 .screen{
     display: flex;
+    text-align: right;
+    direction: ltr;
+    box-sizing: border-box;
+    padding-right: 35px;
     
     width: 100%;
     height: 16.5%;
 
-    font-size: 50px;
-
-    /* border: 1px inset rgb(47, 47, 21); */
     outline: none;
     border:0;
-    box-shadow: 0 0 5px #8A9A5B;
-    
-    text-indent: 10%;
+    border-radius: 15px;
+    box-shadow: 0 0 11px #000000;
+
+    font-size: 50px;
 
     background-color: #c9c9003f;
     cursor: pointer;
 }
 
 .line{
-    height: 16.6%;
-    width: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
     
+    height: 16.6%;
+    width: 100%; 
 }
 
 .button{
-    width: 25%;
-    height: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
+    width: 25%;
+    height: 80%;
 }
 .button:hover{
-    transition: 0.1s ease-in-out;
-    background-color: #8A9A5B;
+    transition: 0.05s ease-in-out;
+    background-color: yellowgreen;
 }
-
 .button-left{
     width: 50%;
-    height: 100%;
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .button-left:hover{
-    transition: 0.1s ease-in-out;
-    background-color: #8A9A5B;
+    transition: 0.05s ease-in-out;
+    background-color: yellowgreen;
 }
 .button-right{
     width: 25%;
-    height: 100%;
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .button-right:hover{
-    transition: 0.1s ease-in-out;
+    transition: 0.05s ease-in-out;
     background-color: yellowgreen;
 }
 
