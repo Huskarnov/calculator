@@ -79,12 +79,23 @@ calcBody.addEventListener("click", function(event){
         //////////////////////////////////////////////+++++++
 
         if(event.target.textContent === "+" &&( !inputMini.value.includes("+"))){ 
+
+            if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
+                    !inputMini.value.includes("-") &&  
+                    !inputMini.value.includes("x") &&
+                    !inputMini.value.includes("/") &&
+                    !inputMini.value.includes("%") 
+                        ){
+                inputMini.value += "+";
+            }
             
             if(inputMini.value.includes("-")){
                 let index = inputMini.value.indexOf("-");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "+";
                 inputMini.value = inputMiniArray.join("");
+                
+                
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "+";
                 
@@ -93,6 +104,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("x");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "+";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "+";
 
@@ -101,6 +113,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("/");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "+";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "+";
                 
@@ -109,6 +122,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("%");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "+";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "+";
                 
@@ -120,9 +134,7 @@ calcBody.addEventListener("click", function(event){
             firstPart = input.value;
             operation = "+";
 
-            if(   !isNaN(inputMini.value[inputMini.value.length - 1])  ){
-                inputMini.value += "+";
-            }
+            
             
             event.target.classList.add("highLight");
 
@@ -134,10 +146,20 @@ calcBody.addEventListener("click", function(event){
         //////////////////////////////////////////////------
 
         if(event.target.textContent === "-" &&( !inputMini.value.includes("-"))){
+            if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
+                    !inputMini.value.includes("+") &&  
+                    !inputMini.value.includes("x") &&
+                    !inputMini.value.includes("/") &&
+                    !inputMini.value.includes("%") 
+                        ){
+                inputMini.value += "-";
+            }
+
             if(inputMini.value.includes("+")){
                 let index = inputMini.value.indexOf("+");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "-";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "-";
                 
@@ -146,6 +168,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("x");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "-";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "-";
                 
@@ -154,6 +177,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("/");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "-";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "-";
                 
@@ -162,6 +186,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("%");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "-";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "-";
                 
@@ -171,9 +196,7 @@ calcBody.addEventListener("click", function(event){
             firstPart = input.value;
             operation = "-";
 
-            if(   !isNaN(inputMini.value[inputMini.value.length - 1])   ){
-                inputMini.value += "-";
-            }
+            
 
             event.target.classList.add("highLight");
 
@@ -186,10 +209,21 @@ calcBody.addEventListener("click", function(event){
         //////////////////////////////////////////////******
 
         if(event.target.textContent === "x" &&( !inputMini.value.includes("x"))){
+
+            if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
+                    !inputMini.value.includes("-") &&  
+                    !inputMini.value.includes("+") &&
+                    !inputMini.value.includes("/") &&
+                    !inputMini.value.includes("%") 
+                        ){
+                inputMini.value += "x";
+            }
+
             if(inputMini.value.includes("-")){
                 let index = inputMini.value.indexOf("-");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "x";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "x";
                 
@@ -198,6 +232,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("+");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "x";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "x";
                 
@@ -206,6 +241,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("/");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "x";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "x";
                 
@@ -214,6 +250,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("%");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "x";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "x";
                 
@@ -223,9 +260,7 @@ calcBody.addEventListener("click", function(event){
             firstPart = input.value;
             operation = "x";
 
-            if(   !isNaN(inputMini.value[inputMini.value.length - 1])   ){
-                inputMini.value += "x";
-            }
+            
 
             event.target.classList.add("highLight");
 
@@ -237,10 +272,21 @@ calcBody.addEventListener("click", function(event){
         ////////////////////////////////////////////// //////
 
         if(event.target.textContent === "/" &&( !inputMini.value.includes("/"))){
+
+            if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
+                    !inputMini.value.includes("-") &&  
+                    !inputMini.value.includes("x") &&
+                    !inputMini.value.includes("+") &&
+                    !inputMini.value.includes("%") 
+                        ){
+                inputMini.value += "/";
+            }
+
             if(inputMini.value.includes("-")){
                 let index = inputMini.value.indexOf("-");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "/";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "/";
                 
@@ -249,6 +295,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("x");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "/";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "/";
                 
@@ -257,6 +304,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("+");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "/";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "/";
                 
@@ -265,6 +313,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("%");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "/";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "/";
                 
@@ -275,9 +324,7 @@ calcBody.addEventListener("click", function(event){
             firstPart = input.value;
             operation = "/";
 
-            if(   !isNaN(inputMini.value[inputMini.value.length - 1])   ){
-                inputMini.value += "/";
-            }
+            
 
             event.target.classList.add("highLight");  
             
@@ -289,10 +336,21 @@ calcBody.addEventListener("click", function(event){
 
         ////////////////////////////////////////////// %%%%%%%%
         if(event.target.textContent === "%" &&( !inputMini.value.includes("%"))){
+
+            if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
+                    !inputMini.value.includes("-") &&  
+                    !inputMini.value.includes("x") &&
+                    !inputMini.value.includes("/") &&
+                    !inputMini.value.includes("+") 
+                        ){
+                inputMini.value += "%";
+            }
+
             if(inputMini.value.includes("-")){
                 let index = inputMini.value.indexOf("-");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "%";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "%";
                 
@@ -301,6 +359,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("x");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "%";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "%";
                 
@@ -309,6 +368,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("/");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "%";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "%";
                 
@@ -317,6 +377,7 @@ calcBody.addEventListener("click", function(event){
                 let index = inputMini.value.indexOf("+");
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "%";
+                inputMini.value = inputMiniArray.join("");
                 // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
                 // inputMini.value += "%";
                 
@@ -328,9 +389,7 @@ calcBody.addEventListener("click", function(event){
             firstPart = input.value;
             operation = "%";
 
-            if(   !isNaN(inputMini.value[inputMini.value.length - 1])   ){
-                inputMini.value += "%";
-            }
+            
             
             event.target.classList.add("highLight");
 
