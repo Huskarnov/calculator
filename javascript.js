@@ -13,7 +13,7 @@ let percentButton = document.querySelector(".percent");
 
 let firstPart;
 let operation;
-let deleteInput = false;
+let deleteInput = false; //clears input for new value
 let deleteMiniInput = false;
 // let newAction = true;
 
@@ -25,7 +25,8 @@ calcBody.addEventListener("click", function(event){
         clearAll()
     }
     /////////////////////////////////////////////////////////////////////////////                                                                                
-    if(event.target.textContent === "DEL"){
+    if(event.target.textContent === "DEL" && !isNaN(inputMini.value[inputMini.value.length - 1])){
+
         input.value = input.value.slice(0, (input.value.length-1));
         inputMini.value = inputMini.value.slice(0, (inputMini.value.length-1));
 
@@ -75,13 +76,15 @@ calcBody.addEventListener("click", function(event){
         }
     /////////////////////////////////////////////////////////////////////////////
     // && newAction === true old condition
-    if(   event.target.id ==="operation"    && !inputMini.value.includes("+")
-                                            && !inputMini.value.includes("-")
-                                            && !inputMini.value.includes("*")
-                                            && !inputMini.value.includes("/")
-                                            && !inputMini.value.includes("%")){
-        if(event.target.textContent === "+"){
+    if(   event.target.id ==="operation"){
+        
+        if(event.target.textContent === "+" &&( !inputMini.value.includes("+") ||
+                                                !inputMini.value.includes("-")  ||
+                                                !inputMini.value.includes("*")  ||
+                                                !inputMini.value.includes("/")  ||
+                                                !inputMini.value.includes("%"))){   
             firstPart = input.value;
+            // inputMini.value[inputMini.value.length -1] = "+"
             operation = "+";
 
             if(   !isNaN(inputMini.value[inputMini.value.length - 1])  ){
