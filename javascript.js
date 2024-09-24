@@ -419,7 +419,11 @@ calcBody.addEventListener("click", function(event){
         clearHighlightAndClearInputs()
         }
         if(operation === "/"){
-        input.value = Math.floor(firstPart)  / Math.floor(input.value);
+            if(firstPart === 0){
+                input.value = "Dividing by 0, serious? Back to Kindergarten"
+            }else{
+                input.value = Math.floor(firstPart)  / Math.floor(input.value);
+            }
         clearHighlightAndClearInputs()
         }
         if(operation === "%"){
