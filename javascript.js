@@ -75,7 +75,11 @@ calcBody.addEventListener("click", function(event){
         }
     /////////////////////////////////////////////////////////////////////////////
     // && newAction === true old condition
-    if(   event.target.id ==="operation"){
+    if(   event.target.id ==="operation"    && !inputMini.value.includes("+")
+                                            && !inputMini.value.includes("-")
+                                            && !inputMini.value.includes("*")
+                                            && !inputMini.value.includes("/")
+                                            && !inputMini.value.includes("%")){
         if(event.target.textContent === "+"){
             firstPart = input.value;
             operation = "+";
@@ -154,7 +158,7 @@ calcBody.addEventListener("click", function(event){
 
         }
         deleteInput = true;
-        newAction = false;
+        // newAction = false;
         
         
     }
