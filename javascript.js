@@ -46,10 +46,10 @@ calcBody.addEventListener("click", function(event){
                     input.value = "";
                     deleteInput = false;
                 }
-                if (deleteMiniInput === true){
-                    inputMini.value = "";
-                    deleteMiniInput = false;
-                }
+                // if (deleteMiniInput === true){
+                //     inputMini.value = "";
+                //     deleteMiniInput = false;
+                // }
 
                 if(input.value ==="0"){
                     input.value = ""
@@ -66,10 +66,10 @@ calcBody.addEventListener("click", function(event){
                     input.value = "";
                     deleteInput = false;
                 }
-                if (deleteMiniInput === true){
-                    inputMini.value = "";
-                    deleteMiniInput = false;
-                }
+                // if (deleteMiniInput === true){
+                //     inputMini.value = "";
+                //     deleteMiniInput = false;
+                // }
                 input.value += `${event.target.textContent}`;
                 inputMini.value += `${event.target.textContent}`;
             }
@@ -81,23 +81,36 @@ calcBody.addEventListener("click", function(event){
         if(event.target.textContent === "+" &&( !inputMini.value.includes("+"))){ 
             
             if(inputMini.value.includes("-")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "+";
+                let index = inputMini.value.indexOf("-");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "+";
+                inputMini.value = inputMiniArray.join("");
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "+";
                 
             }
-            if(inputMini.value.includes("*")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "+";
-                
+            if(inputMini.value.includes("x")){
+                let index = inputMini.value.indexOf("x");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "+";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "+";
+
             }
             if(inputMini.value.includes("/")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "+";
+                let index = inputMini.value.indexOf("/");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "+";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "+";
                 
             }
             if(inputMini.value.includes("%")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "+";
+                let index = inputMini.value.indexOf("%");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "+";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "+";
                 
             }
 
@@ -122,23 +135,35 @@ calcBody.addEventListener("click", function(event){
 
         if(event.target.textContent === "-" &&( !inputMini.value.includes("-"))){
             if(inputMini.value.includes("+")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "-";
+                let index = inputMini.value.indexOf("+");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "-";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "-";
                 
             }
             if(inputMini.value.includes("x")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "-";
+                let index = inputMini.value.indexOf("x");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "-";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "-";
                 
             }
             if(inputMini.value.includes("/")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "-";
+                let index = inputMini.value.indexOf("/");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "-";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "-";
                 
             }
             if(inputMini.value.includes("%")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "-";
+                let index = inputMini.value.indexOf("%");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "-";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "-";
                 
             }
 
@@ -162,32 +187,44 @@ calcBody.addEventListener("click", function(event){
 
         if(event.target.textContent === "x" &&( !inputMini.value.includes("x"))){
             if(inputMini.value.includes("-")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "x";
+                let index = inputMini.value.indexOf("-");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "x";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "x";
                 
             }
             if(inputMini.value.includes("+")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "x";
+                let index = inputMini.value.indexOf("+");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "x";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "x";
                 
             }
             if(inputMini.value.includes("/")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "x";
+                let index = inputMini.value.indexOf("/");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "x";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "x";
                 
             }
             if(inputMini.value.includes("%")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "x";
+                let index = inputMini.value.indexOf("%");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "x";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "x";
                 
             }
 
 
             firstPart = input.value;
-            operation = "*";
+            operation = "x";
 
             if(   !isNaN(inputMini.value[inputMini.value.length - 1])   ){
-                inputMini.value += "*";
+                inputMini.value += "x";
             }
 
             event.target.classList.add("highLight");
@@ -201,23 +238,35 @@ calcBody.addEventListener("click", function(event){
 
         if(event.target.textContent === "/" &&( !inputMini.value.includes("/"))){
             if(inputMini.value.includes("-")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "/";
+                let index = inputMini.value.indexOf("-");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "/";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "/";
                 
             }
             if(inputMini.value.includes("x")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "/";
+                let index = inputMini.value.indexOf("x");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "/";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "/";
                 
             }
             if(inputMini.value.includes("+")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "/";
+                let index = inputMini.value.indexOf("+");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "/";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "/";
                 
             }
             if(inputMini.value.includes("%")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "/";
+                let index = inputMini.value.indexOf("%");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "/";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "/";
                 
             }
 
@@ -241,23 +290,35 @@ calcBody.addEventListener("click", function(event){
         ////////////////////////////////////////////// %%%%%%%%
         if(event.target.textContent === "%" &&( !inputMini.value.includes("%"))){
             if(inputMini.value.includes("-")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "%";
+                let index = inputMini.value.indexOf("-");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "%";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "%";
                 
             }
             if(inputMini.value.includes("x")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "%";
+                let index = inputMini.value.indexOf("x");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "%";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "%";
                 
             }
             if(inputMini.value.includes("/")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "%";
+                let index = inputMini.value.indexOf("/");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "%";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "%";
                 
             }
             if(inputMini.value.includes("+")){
-                inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
-                inputMini.value += "%";
+                let index = inputMini.value.indexOf("+");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "%";
+                // inputMini.value = inputMini.value.slice(0, inputMini.value.length-1);
+                // inputMini.value += "%";
                 
             }
 
@@ -278,9 +339,9 @@ calcBody.addEventListener("click", function(event){
             multiplyButton.classList.remove("highLight");
             divideButton.classList.remove("highLight");
 
-        }``
+        }
         deleteInput = true;
-        // newAction = false;
+        
         
         
     }
@@ -294,7 +355,7 @@ calcBody.addEventListener("click", function(event){
         input.value = Math.floor(firstPart) - Math.floor(input.value) ;
         clearHighlightAndClearInputs()
         }
-        if(operation === "*"){
+        if(operation === "x"){
         input.value = Math.floor(firstPart) * Math.floor(input.value);
         clearHighlightAndClearInputs()
         }
