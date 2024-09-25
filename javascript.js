@@ -29,18 +29,30 @@ calcBody.addEventListener("click", function(event){
         clearAll()
     }
     /////////////////////////////////////////////////////////////////////////////                                                                                
-    if(event.target.textContent === "DEL" && !isNaN(inputMini.value[inputMini.value.length - 1])){
+    if(event.target.textContent === "DEL"){
 
-        input.value = input.value.slice(0, (input.value.length-1));
-        inputMini.value = inputMini.value.slice(0, (inputMini.value.length-1));
+        if(!isNaN(inputMini.value[inputMini.value.length - 1])){
 
-        if(input.value === ""){
-            input.value = 0;
+            input.value = input.value.slice(0, (input.value.length-1));
+            inputMini.value = inputMini.value.slice(0, (inputMini.value.length-1));
+
+            if(input.value === ""){
+                input.value = 0;
+            }
+            if(inputMini.value === ""){
+                inputMini.value = 0;
+            }
+        }else{
+            
+            inputMini.value = inputMini.value.slice(0, (inputMini.value.length-1));
+
+            addButton.classList.remove("highLight");
+            substractButton.classList.remove("highLight");
+            multiplyButton.classList.remove("highLight");
+            divideButton.classList.remove("highLight");
+            percentButton.classList.remove("highLight");
+            operation = "";
         }
-        if(inputMini.value === ""){
-            inputMini.value = 0;
-        }
-        
     }
     //////////////////////////NUMBERS///////////////////////////////////////
     if(input.value.length <= 11)
@@ -100,6 +112,8 @@ calcBody.addEventListener("click", function(event){
 
         if(event.target.textContent === "+" &&( !inputMini.value.includes("+"))){ 
 
+            
+
             if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
                     !inputMini.value.includes("-") &&  
                     !inputMini.value.includes("x") &&
@@ -140,9 +154,12 @@ calcBody.addEventListener("click", function(event){
 
 
 
-            firstPart = input.value;
-            operation = "+";
+            if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
+                    !(operation === "/") && !(operation === "%") ){
+                    firstPart = input.value;}
 
+            operation = "+";
+            
             
             
             event.target.classList.add("highLight");
@@ -155,6 +172,9 @@ calcBody.addEventListener("click", function(event){
         //////////////////////////////////////////////------
 
         if(event.target.textContent === "-" &&( !inputMini.value.includes("-"))){
+
+            
+
             if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
                     !inputMini.value.includes("+") &&  
                     !inputMini.value.includes("x") &&
@@ -194,9 +214,11 @@ calcBody.addEventListener("click", function(event){
             }
 
 
-            firstPart = input.value;
-            operation = "-";
+            if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
+                !(operation === "/") && !(operation === "%") ){
+                firstPart = input.value;}
 
+            operation = "-";
             
 
             event.target.classList.add("highLight");
@@ -210,6 +232,8 @@ calcBody.addEventListener("click", function(event){
         //////////////////////////////////////////////******
 
         if(event.target.textContent === "x" &&( !inputMini.value.includes("x"))){
+
+            
 
             if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
                     !inputMini.value.includes("-") &&  
@@ -250,9 +274,13 @@ calcBody.addEventListener("click", function(event){
             }
 
 
-            firstPart = input.value;
+            if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
+                !(operation === "/") && !(operation === "%") ){
+                firstPart = input.value;}
+                
             operation = "x";
-
+            
+            
             
 
             event.target.classList.add("highLight");
@@ -265,6 +293,8 @@ calcBody.addEventListener("click", function(event){
         ////////////////////////////////////////////// //////
 
         if(event.target.textContent === "/" &&( !inputMini.value.includes("/"))){
+
+            
 
             if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
                     !inputMini.value.includes("-") &&  
@@ -306,9 +336,14 @@ calcBody.addEventListener("click", function(event){
 
 
 
-            firstPart = input.value;
-            operation = "/";
+        
+            if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
+            !(operation === "/") && !(operation === "%") ){
+            firstPart = input.value;}
 
+            operation = "/";
+            
+            
             
 
             event.target.classList.add("highLight");  
@@ -321,6 +356,8 @@ calcBody.addEventListener("click", function(event){
 
         ////////////////////////////////////////////// %%%%%%%%
         if(event.target.textContent === "%" &&( !inputMini.value.includes("%"))){
+
+            
 
             if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
                     !inputMini.value.includes("-") &&  
@@ -363,9 +400,13 @@ calcBody.addEventListener("click", function(event){
 
 
 
-            firstPart = input.value;
+            if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
+                !(operation === "/") && !(operation === "%") ){
+                firstPart = input.value;}
+                
             operation = "%";
-
+            
+            
             
             
             event.target.classList.add("highLight");
@@ -378,11 +419,11 @@ calcBody.addEventListener("click", function(event){
         }
         
         
-        
+        deleteMiniInput = false;
         
     }
 
-    if(   event.target.id ==="equal" ){
+    if(   event.target.id ==="equal" && !(isNaN(firstPart)) && !(operation === "") ){
         if(operation === "+"){
         input.value = Math.floor(firstPart) + Math.floor(input.value); 
         
@@ -443,6 +484,6 @@ function clearHighlightAndClearInputs(){
 
 function proceedWithLastResult(){
     inputMini.value = input.value;
-    firstPart = input.value;
+    // firstPart = input.value;
     
 }
