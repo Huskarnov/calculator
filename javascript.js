@@ -42,7 +42,7 @@ calcBody.addEventListener("click", function(event){
         }
         
     }
-    /////////////////////////////////////////////////////////////////////////////
+    //////////////////////////NUMBERS///////////////////////////////////////
     if(input.value.length <= 11)
         {
             if(event.target.id ==="number" && !(event.target.textContent === "0")){
@@ -50,15 +50,16 @@ calcBody.addEventListener("click", function(event){
                     input.value = "";
                     deleteInput = false;
                 }
-                // if (deleteMiniInput === true){
-                //     inputMini.value = "";
-                //     deleteMiniInput = false;
-                // }
-
-                if(input.value ==="0"){
-                    input.value = ""
-                    inputMini.value = ""
+                if (deleteMiniInput === true){
+                    inputMini.value = "";
+                    deleteMiniInput = false;
                 }
+
+                if(input.value === "0"){
+                    input.value = "";
+                    inputMini.value = "";
+                }
+
                 input.value += `${event.target.textContent}`;
                 inputMini.value += `${event.target.textContent}`;
 
