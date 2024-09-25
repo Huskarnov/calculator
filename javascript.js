@@ -1,7 +1,7 @@
 
-let calcBody = document.querySelector(".calcBody");
-let input = document.querySelector(".screen");
-let inputMini = document.querySelector(".screenMini");
+const calcBody = document.querySelector(".calcBody");
+const input = document.querySelector(".screen");
+const inputMini = document.querySelector(".screenMini");
 
 //to add-remouve highlight animation class only
 let addButton = document.querySelector(".add");
@@ -10,8 +10,16 @@ let multiplyButton = document.querySelector(".multiply");
 let divideButton = document.querySelector(".divide");
 let percentButton = document.querySelector(".percent");
 
+// const operatorButtons = {
+//     add: document.querySelector(".add"),
+//     subtract: document.querySelector(".substract"),
+//     multiply: document.querySelector(".multiply"),
+//     divide: document.querySelector(".divide"),
+//     percent: document.querySelector(".percent")
+//     };
 
-let firstPart; //first part of the operation
+
+let firstOperand; //first part of the operation
 let operation; //set current operation type (+ - x / %)
 let deleteInput = false;         //both authorize numbers 
 let deleteMiniInput = false;     //to clean the slate for next input
@@ -52,6 +60,8 @@ calcBody.addEventListener("click", function(event){
             divideButton.classList.remove("highLight");
             percentButton.classList.remove("highLight");
             operation = "";
+            deleteInput = false;
+            
         }
     }
     //////////////////////////NUMBERS///////////////////////////////////////
@@ -156,7 +166,7 @@ calcBody.addEventListener("click", function(event){
 
             if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
                     !(operation === "/") && !(operation === "%") ){
-                    firstPart = input.value;}
+                    firstOperand = input.value;}
 
             operation = "+";
             
@@ -216,7 +226,7 @@ calcBody.addEventListener("click", function(event){
 
             if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
                 !(operation === "/") && !(operation === "%") ){
-                firstPart = input.value;}
+                firstOperand = input.value;}
 
             operation = "-";
             
@@ -276,7 +286,7 @@ calcBody.addEventListener("click", function(event){
 
             if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
                 !(operation === "/") && !(operation === "%") ){
-                firstPart = input.value;}
+                firstOperand = input.value;}
                 
             operation = "x";
             
@@ -339,7 +349,7 @@ calcBody.addEventListener("click", function(event){
         
             if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
             !(operation === "/") && !(operation === "%") ){
-            firstPart = input.value;}
+            firstOperand = input.value;}
 
             operation = "/";
             
@@ -402,7 +412,7 @@ calcBody.addEventListener("click", function(event){
 
             if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
                 !(operation === "/") && !(operation === "%") ){
-                firstPart = input.value;}
+                firstOperand = input.value;}
                 
             operation = "%";
             
@@ -423,19 +433,19 @@ calcBody.addEventListener("click", function(event){
         
     }
 
-    if(   event.target.id ==="equal" && !(isNaN(firstPart)) && !(operation === "") ){
+    if(   event.target.id ==="equal" && !(isNaN(firstOperand)) && !(operation === "") ){
         if(operation === "+"){
-        input.value = Math.floor(firstPart) + Math.floor(input.value); 
+        input.value = parseFloat(firstOperand) + parseFloat(input.value); 
         
         clearHighlightAndClearInputs();
         }
         if(operation === "-"){
-        input.value = Math.floor(firstPart) - Math.floor(input.value) ;
+        input.value = parseFloat(firstOperand) - parseFloat(input.value) ;
         
         clearHighlightAndClearInputs();
         }
         if(operation === "x"){
-        input.value = Math.floor(firstPart) * Math.floor(input.value);
+        input.value = parseFloat(firstOperand) * parseFloat(input.value);
         
         clearHighlightAndClearInputs();
         }
@@ -445,7 +455,7 @@ calcBody.addEventListener("click", function(event){
                 alert("Dividing by 0, Back to Kindergarten");
 
             }else{
-                input.value = Math.floor(firstPart)  / Math.floor(input.value);
+                input.value = parseFloat(firstOperand)  / parseFloat(input.value);
             }
 
         
@@ -453,7 +463,7 @@ calcBody.addEventListener("click", function(event){
         }
 
         if(operation === "%"){
-        input.value = (Math.floor(firstPart) / Math.floor(input.value) )*100;
+        input.value = (parseFloat(firstOperand) / parseFloat(input.value) )*100;
         
         clearHighlightAndClearInputs();
         }
@@ -472,7 +482,7 @@ function clearAll(){
             divideButton.classList.remove("highLight");
             percentButton.classList.remove("highLight");
             operation = "";
-            firstPart = "";
+            firstOperand = "";
             
 }
 
@@ -484,6 +494,6 @@ function clearHighlightAndClearInputs(){
 
 function proceedWithLastResult(){
     inputMini.value = input.value;
-    // firstPart = input.value;
+    // firstOperand = input.value;
     
 }
