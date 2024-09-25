@@ -46,6 +46,7 @@ calcBody.addEventListener("click", function(event){
     if(input.value.length <= 11)
         {
             if(event.target.id ==="number" && !(event.target.textContent === "0")){
+                //prepares inputs for secondpart value
                 if (deleteInput === true){
                     input.value = "";
                     deleteInput = false;
@@ -55,10 +56,15 @@ calcBody.addEventListener("click", function(event){
                     deleteMiniInput = false;
                 }
 
+                //to avoid having 0 at the right of a new number
                 if(input.value === "0"){
                     input.value = "";
+                }
+                
+                if(inputMini.value === "0"){
                     inputMini.value = "";
                 }
+
 
                 input.value += `${event.target.textContent}`;
                 inputMini.value += `${event.target.textContent}`;
@@ -76,8 +82,20 @@ calcBody.addEventListener("click", function(event){
                 inputMini.value += `${event.target.textContent}`;
             }
         }
-    /////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////OPERATIONS//////////////////////////////////
+    /////////////////////////////////OPERATIONS//////////////////////////////////
+
     if(   event.target.id ==="operation"){
+
+        if(!(inputMini.value.includes("+") ||
+            inputMini.value.includes("-") ||
+            inputMini.value.includes("x") ||
+            inputMini.value.includes("/") ||
+            inputMini.value.includes("%"))){
+
+        deleteInput = true;
+    }
+
         //////////////////////////////////////////////+++++++
 
         if(event.target.textContent === "+" &&( !inputMini.value.includes("+"))){ 
@@ -358,7 +376,7 @@ calcBody.addEventListener("click", function(event){
             divideButton.classList.remove("highLight");
 
         }
-        deleteInput = true;
+        
         
         
         
@@ -413,6 +431,7 @@ function clearAll(){
             divideButton.classList.remove("highLight");
             percentButton.classList.remove("highLight");
             operation = "";
+            firstPart = "";
             
 }
 
@@ -424,6 +443,6 @@ function clearHighlightAndClearInputs(){
 
 function proceedWithLastResult(){
     inputMini.value = input.value;
-    firstPart.value = input.value;
+    firstPart = input.value;
     
 }
