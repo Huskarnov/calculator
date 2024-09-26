@@ -494,9 +494,13 @@ calcBody.addEventListener("click", function(event){
         }
 
         if(operation === "%"){
+            if (firstOperand === 0){
+                alert("Dividing by 0, Back to Kindergarten");
+            }else{
         input.value = (parseFloat(firstOperand) / parseFloat(input.value) )*100;
         
         clearHighlightAndClearInputs();
+            }
         }
 
         
