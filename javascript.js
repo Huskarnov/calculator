@@ -64,6 +64,10 @@ calcBody.addEventListener("click", function(event){
             deleteInput = false;
             
         }
+
+        deleteInput = false;
+        deleteInput = false;
+
     }
     ////////////////////////////////////////////////////////////////////////
     if (event.target.textContent === "." && !input.value.includes(".")){
@@ -85,8 +89,8 @@ calcBody.addEventListener("click", function(event){
         deleteMiniInput = false;
     }
     //////////////////////////NUMBERS///////////////////////////////////////
-    if(input.value.length <= 11)
-        {
+
+    
             if(event.target.id ==="number" && !(event.target.textContent === "0")){
                 //prepares inputs for secondpart value
                 if (deleteInput === true){
@@ -107,10 +111,11 @@ calcBody.addEventListener("click", function(event){
                     inputMini.value = "";
                 }
 
-
+                if(input.value.length <= 11)
+                    {
                 input.value += `${event.target.textContent}`;
                 inputMini.value += `${event.target.textContent}`;
-
+                    }
                 
             }
 
@@ -119,11 +124,12 @@ calcBody.addEventListener("click", function(event){
                     input.value = "";
                     deleteInput = false;
                 }
-                
+                if(input.value.length <= 11)
+                    {
                 input.value += `${event.target.textContent}`;
                 inputMini.value += `${event.target.textContent}`;
+                    }
             }
-        }
     /////////////////////////////////OPERATIONS//////////////////////////////////
     /////////////////////////////////OPERATIONS//////////////////////////////////
 
@@ -563,12 +569,53 @@ document.addEventListener("keydown", function(event){
         case ".":
             document.querySelector("#dot").click();
             break;
-
-        default:
-            if (!isNaN(event.key)){
-                document.querySelector(`.${String(event.key)}`).click();
-            }
+            
+        case "1":
+            document.querySelector(".one").click();
             break;
+
+        case "2":
+            document.querySelector(".two").click();
+            break;
+
+        case "3":
+            document.querySelector(".three").click();
+            break;
+
+        case "4":
+            document.querySelector(".four").click();
+            break;
+
+        case "5":
+            document.querySelector(".five").click();
+            break;
+
+        case "6":
+            document.querySelector(".six").click();
+            break;
+
+        case "7":
+            document.querySelector(".seven").click();
+            break;
+
+        case "8":
+            document.querySelector(".eight").click();
+            break;
+
+        case "9":
+            document.querySelector(".nine").click();
+            break;
+
+        case "0":
+            document.querySelector(".zero").click();
+            break;
+
+        // default:
+        //     if (!isNaN(event.key)){
+        //     document.querySelector(`.${(event.key)}`).click();
+            
+        //     }
+        //     break;
 
     }
 
