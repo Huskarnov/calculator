@@ -53,6 +53,8 @@ section{
     font-weight: 800;
 
     cursor: pointer;
+    pointer-events: none;
+
 }
 .screen{
     display: flex;
@@ -73,6 +75,7 @@ section{
 
     background-color: #c9c9003f;
     cursor: pointer;
+    pointer-events: none;
 }
 
 .line{

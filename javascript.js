@@ -39,7 +39,8 @@ calcBody.addEventListener("click", function(event){
     /////////////////////////////////////////////////////////////////////////////                                                                                
     if(event.target.textContent === "DEL"){
 
-        if(!isNaN(inputMini.value[inputMini.value.length - 1])){
+        if(!isNaN(inputMini.value[inputMini.value.length - 1]) ||
+        (inputMini.value[inputMini.value.length - 1] === ".")){
 
             input.value = input.value.slice(0, (input.value.length-1));
             inputMini.value = inputMini.value.slice(0, (inputMini.value.length-1));
@@ -63,6 +64,25 @@ calcBody.addEventListener("click", function(event){
             deleteInput = false;
             
         }
+    }
+    ////////////////////////////////////////////////////////////////////////
+    if (event.target.textContent === "." && !input.value.includes(".")){
+
+        if( inputMini.value[inputMini.value.length - 1] === "+" ||
+            inputMini.value[inputMini.value.length - 1] === "-" ||
+            inputMini.value[inputMini.value.length - 1] === "x" ||
+            inputMini.value[inputMini.value.length - 1] === "/" ||
+            inputMini.value[inputMini.value.length - 1] === "%"
+        ){
+            input.value ="";
+            input.value += "0";
+            inputMini.value += "0";
+        }
+
+        input.value += `${event.target.textContent}`;
+        inputMini.value += `${event.target.textContent}`;
+        deleteInput = false;
+        deleteMiniInput = false;
     }
     //////////////////////////NUMBERS///////////////////////////////////////
     if(input.value.length <= 11)
@@ -108,6 +128,11 @@ calcBody.addEventListener("click", function(event){
     /////////////////////////////////OPERATIONS//////////////////////////////////
 
     if(   event.target.id ==="operation"){
+
+        if(inputMini.value[inputMini.value.length - 1] === "."){
+            input.value = input.value.slice(0, (input.value.length-1));
+            inputMini.value = inputMini.value.slice(0, (inputMini.value.length-1));
+            }
 
         if(!(inputMini.value.includes("+") ||
             inputMini.value.includes("-") ||
@@ -497,3 +522,54 @@ function proceedWithLastResult(){
     // firstOperand = input.value;
     
 }
+
+document.addEventListener("keydown", function(event){
+
+    event.preventDefault();
+
+    switch(event.key){
+        case '+':
+            addButton.click();
+            break;
+
+        case '-':
+            substractButton.click();
+            break;
+
+        case '*':
+            multiplyButton.click();
+            break;
+        
+        case '/':
+            divideButton.click();
+            break;
+
+        case '%':
+            percentButton.click();
+            break;
+        
+        case 'Enter':
+            document.querySelector("#equal").click();
+            break;
+        
+        case "Backspace":
+            document.querySelector(".backspace").click();
+            break;
+
+        case "Escape":
+            document.querySelector(".suppr").click();
+            break;
+
+        case ".":
+            document.querySelector("#dot").click();
+            break;
+
+        default:
+            if (!isNaN(event.key)){
+                document.querySelector(`.${String(event.key)}`).click();
+            }
+            break;
+
+    }
+
+});
