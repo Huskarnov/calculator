@@ -637,7 +637,7 @@ document.addEventListener("keydown", function(event){
             break;
         
         case 'Enter':
-            document.querySelector("#equal").click();
+            document.querySelector(".equal").click();
             break;
         
         case "Backspace":
@@ -649,7 +649,7 @@ document.addEventListener("keydown", function(event){
             break;
 
         case ".":
-            document.querySelector("#dot").click();
+            document.querySelector(".dot").click();
             break;
             
         case "1":

@@ -138,3 +138,15 @@ section{
     }
     100% {background-color: #c9c9003f;}
 }
+
+.add, .substract, .multiply, .divide, .equal{
+    background-color: #c9c9003f;
+}
+
+
+.firstL{
+    gap: 1px;
+}
+.suppr, .backspace, .percent{
+    background-color: #80808030;
+}
