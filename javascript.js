@@ -27,7 +27,6 @@ let deleteMiniInput = false;     //to clean the slate for next input
 
 
 
-
 //////////////////////mega click event//////////////////////
 //////////////////////mega click event//////////////////////
 
@@ -61,7 +60,7 @@ calcBody.addEventListener("click", function(event){
             multiplyButton.classList.remove("highLight");
             divideButton.classList.remove("highLight");
             percentButton.classList.remove("highLight");
-            operation = "";
+            operation = null;
             deleteInput = false;
             
         }
@@ -166,11 +165,17 @@ calcBody.addEventListener("click", function(event){
             }
             
             if(inputMini.value.includes("-")){
-                let index = inputMini.value.indexOf("-");
-                let inputMiniArray= inputMini.value.split("");
-                inputMiniArray[index] = "+";
-                inputMini.value = inputMiniArray.join("");    
-                
+
+                let lastIndex = inputMini.value.lastIndexOf("-");
+                console.log(lastIndex);
+                if (lastIndex > 0){
+                    let inputMiniArray = inputMini.value.split("");
+                    inputMiniArray[lastIndex] = "+";
+                    inputMini.value = inputMiniArray.join("");   
+                }else if(!operation){
+                    inputMini.value += "+";
+                }
+
             }
 
             if(inputMini.value.includes("x")){
@@ -223,9 +228,11 @@ calcBody.addEventListener("click", function(event){
                     !inputMini.value.includes("+") &&  
                     !inputMini.value.includes("x") &&
                     !inputMini.value.includes("/") &&
-                    !inputMini.value.includes("%") 
+                    !inputMini.value.includes("%") &&
+                    !operation
                         ){
-                inputMini.value += "-";
+                inputMini.value += "-"; 
+                
             }
 
             if(inputMini.value.includes("+")){
@@ -258,11 +265,7 @@ calcBody.addEventListener("click", function(event){
             }
 
 
-            if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
-                !(operation === "/") && !(operation === "%") ){
-                firstOperand = input.value;}
 
-            operation = "-";
             
 
             event.target.classList.add("highLight");
@@ -272,7 +275,59 @@ calcBody.addEventListener("click", function(event){
             divideButton.classList.remove("highLight");
             percentButton.classList.remove("highLight");
             
+        }else{
+            if (  ((String(inputMini.value)[0]) === "-") &&
+                    (  !isNaN((inputMini.value)[inputMini.value.length - 1])  ) &&
+                !operation){
+                inputMini.value += "-";
+
+            }
+
+            if(inputMini.value.includes("+")){
+                let index = inputMini.value.indexOf("+");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "-";
+                inputMini.value = inputMiniArray.join("");
+            }
+
+            if(inputMini.value.includes("x")){
+                let index = inputMini.value.indexOf("x");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "-";
+                inputMini.value = inputMiniArray.join("");
+            }
+
+            if(inputMini.value.includes("/")){
+                let index = inputMini.value.indexOf("/");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "-";
+                inputMini.value = inputMiniArray.join("");
+
+            }
+            if(inputMini.value.includes("%")){
+                let index = inputMini.value.indexOf("%");
+                let inputMiniArray= inputMini.value.split("");
+                inputMiniArray[index] = "-";
+                inputMini.value = inputMiniArray.join("");
+
+            }
+
+
         }
+
+        
+        if(!(operation === "+") && !(operation === "-") && !(operation === "x") &&
+                !(operation === "/") && !(operation === "%") ){
+                firstOperand = input.value;
+            }
+
+            event.target.classList.add("highLight");
+
+            addButton.classList.remove("highLight");
+            multiplyButton.classList.remove("highLight");
+            divideButton.classList.remove("highLight");
+            percentButton.classList.remove("highLight");
+            operation = "-";
 
 
 
@@ -296,10 +351,15 @@ calcBody.addEventListener("click", function(event){
             }
 
             if(inputMini.value.includes("-")){
-                let index = inputMini.value.indexOf("-");
-                let inputMiniArray= inputMini.value.split("");
-                inputMiniArray[index] = "x";
-                inputMini.value = inputMiniArray.join("");
+
+                let lastIndex = inputMini.value.lastIndexOf("-");
+                if (lastIndex > 0){
+                    let inputMiniArray = inputMini.value.split("");
+                    inputMiniArray[lastIndex] = "x";
+                    inputMini.value = inputMiniArray.join("");   
+                }else if(!operation){
+                    inputMini.value += "x";
+                }
 
             }
             if(inputMini.value.includes("+")){
@@ -357,10 +417,14 @@ calcBody.addEventListener("click", function(event){
             }
 
             if(inputMini.value.includes("-")){
-                let index = inputMini.value.indexOf("-");
-                let inputMiniArray= inputMini.value.split("");
-                inputMiniArray[index] = "/";
-                inputMini.value = inputMiniArray.join("");
+                let lastIndex = inputMini.value.lastIndexOf("-");
+                if (lastIndex > 0){
+                    let inputMiniArray = inputMini.value.split("");
+                    inputMiniArray[lastIndex] = "/";
+                    inputMini.value = inputMiniArray.join("");   
+                }else if(!operation){
+                    inputMini.value += "/";
+                }
 
             }
             if(inputMini.value.includes("x")){
@@ -420,10 +484,14 @@ calcBody.addEventListener("click", function(event){
             }
 
             if(inputMini.value.includes("-")){
-                let index = inputMini.value.indexOf("-");
-                let inputMiniArray= inputMini.value.split("");
-                inputMiniArray[index] = "%";
-                inputMini.value = inputMiniArray.join("");
+                let lastIndex = inputMini.value.lastIndexOf("-");
+                if (lastIndex > 0){
+                    let inputMiniArray = inputMini.value.split("");
+                    inputMiniArray[lastIndex] = "%";
+                    inputMini.value = inputMiniArray.join("");   
+                }else if(!operation){
+                    inputMini.value += "%";
+                }
 
             }
             if(inputMini.value.includes("x")){
@@ -526,7 +594,7 @@ function clearAll(){
             multiplyButton.classList.remove("highLight");
             divideButton.classList.remove("highLight");
             percentButton.classList.remove("highLight");
-            operation = "";
+            operation = null;
             firstOperand = "";
             
 }
@@ -623,6 +691,10 @@ document.addEventListener("keydown", function(event){
         case "0":
             document.querySelector(".zero").click();
             break;
+        case "r":
+            console.log(operation);
+            // console.log(String(firstOperand));
+            break;
 
         // default:
         //     if (!isNaN(event.key)){
@@ -634,3 +706,5 @@ document.addEventListener("keydown", function(event){
     }
 
 });
+
+
