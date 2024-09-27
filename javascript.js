@@ -544,17 +544,17 @@ calcBody.addEventListener("click", function(event){
 
     if(   event.target.id ==="equal" && !(isNaN(firstOperand)) && !(operation === "") ){
         if(operation === "+"){
-        input.value = parseFloat(firstOperand) + parseFloat(input.value); 
+        input.value = formatLargeNumber(parseFloat(firstOperand) + parseFloat(input.value)); 
         
         clearHighlightAndClearInputs();
         }
         if(operation === "-"){
-        input.value = parseFloat(firstOperand) - parseFloat(input.value) ;
+        input.value = formatLargeNumber(parseFloat(firstOperand) - parseFloat(input.value)) ;
         
         clearHighlightAndClearInputs();
         }
         if(operation === "x"){
-        input.value = parseFloat(firstOperand) * parseFloat(input.value);
+        input.value = formatLargeNumber(parseFloat(firstOperand) * parseFloat(input.value));
         
         clearHighlightAndClearInputs();
         }
@@ -564,7 +564,7 @@ calcBody.addEventListener("click", function(event){
                 alert("Dividing by 0, Back to Kindergarten");
 
             }else{
-                input.value = parseFloat(firstOperand)  / parseFloat(input.value);
+                input.value = formatLargeNumber(parseFloat(firstOperand)  / parseFloat(input.value));
             }
 
         
@@ -575,7 +575,7 @@ calcBody.addEventListener("click", function(event){
             if (firstOperand === 0){
                 alert("Dividing by 0, Back to Kindergarten");
             }else{
-        input.value = (parseFloat(firstOperand) / parseFloat(input.value) )*100;
+        input.value = formatLargeNumber((parseFloat(firstOperand) / parseFloat(input.value) )*100);
         
         clearHighlightAndClearInputs();
             }
@@ -708,3 +708,37 @@ document.addEventListener("keydown", function(event){
 });
 
 
+function formatLargeNumber(number, maxLength = 11) {
+    // Convert to string and remove any existing formatting
+    let numStr = number.toString().replace(/[,e]/g, '');
+    let isNegative = numStr.startsWith('-');
+    if (isNegative) numStr = numStr.slice(1);
+
+    // Function to round to significant digits
+    function roundToSigDigits(num, sigDigits) {
+        return Number(num.toPrecision(sigDigits));
+    }
+
+    // Handle numbers that fit without scientific notation
+    if (numStr.length <= maxLength - (isNegative ? 1 : 0)) {
+        return isNegative ? '-' + numStr : numStr;
+    }
+
+    // Scientific notation for very large or small numbers
+    let exponent = Math.floor(Math.log10(Math.abs(number)));
+    if (Math.abs(exponent) >= 9) {
+        let mantissa = number / Math.pow(10, exponent);
+        mantissa = roundToSigDigits(mantissa, maxLength - 6 - (isNegative ? 1 : 0));
+        return `${isNegative ? '-' : ''}${mantissa}e${exponent >= 0 ? '+' : ''}${exponent}`;
+    }
+
+    // For moderately large numbers, use abbreviated format
+    const suffixes = ['', 'K', 'M', 'B', 'T'];
+    let suffixIndex = Math.floor(Math.log10(Math.abs(number)) / 3);
+    let shortValue = number / Math.pow(1000, suffixIndex);
+    
+    let precision = maxLength - 2 - (isNegative ? 1 : 0) - (suffixIndex > 0 ? 1 : 0);
+    shortValue = roundToSigDigits(shortValue, precision);
+    
+    return `${isNegative ? '-' : ''}${shortValue}${suffixes[suffixIndex]}`;
+}
