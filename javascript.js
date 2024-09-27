@@ -19,8 +19,9 @@ let percentButton = document.querySelector(".percent");
 //     };
 
 
-let firstOperand; //first part of the operation
-let operation; //set current operation type (+ - x / %)
+let firstOperand;  //first part of the operation
+let secondOperand; //second part of the operation
+let operation;  //set current operation type (+ - x / %)
 let deleteInput = false;         //both authorize numbers 
 let deleteMiniInput = false;     //to clean the slate for next input
 
@@ -169,6 +170,7 @@ calcBody.addEventListener("click", function(event){
                 let inputMiniArray= inputMini.value.split("");
                 inputMiniArray[index] = "+";
                 inputMini.value = inputMiniArray.join("");    
+                
             }
 
             if(inputMini.value.includes("x")){
@@ -210,11 +212,12 @@ calcBody.addEventListener("click", function(event){
             divideButton.classList.remove("highLight");
             percentButton.classList.remove("highLight");
         }
-        //////////////////////////////////////////////------
+        //////////////////////////////////////////////------ minus is special cuz of 
+        //                                                          neg value 
 
-        if(event.target.textContent === "-" &&( !inputMini.value.includes("-"))){
+        if(event.target.textContent === "-"){
 
-            
+        if(!inputMini.value.includes("-")){
 
             if(   (!isNaN(inputMini.value[inputMini.value.length - 1])) &&
                     !inputMini.value.includes("+") &&  
@@ -270,6 +273,13 @@ calcBody.addEventListener("click", function(event){
             percentButton.classList.remove("highLight");
             
         }
+
+
+
+
+
+
+    }
         //////////////////////////////////////////////******
 
         if(event.target.textContent === "x" &&( !inputMini.value.includes("x"))){
