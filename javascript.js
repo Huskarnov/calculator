@@ -22,6 +22,8 @@ let percentButton = document.querySelector(".percent");
 let firstOperand;  //first part of the operation
 let secondOperand; //second part of the operation
 let operation;  //set current operation type (+ - x / %)
+let writtenOperand = "firstOperand";
+
 let deleteInput = false;         //both authorize numbers 
 let deleteMiniInput = false;     //to clean the slate for next input
 
@@ -33,8 +35,6 @@ let deleteMiniInput = false;     //to clean the slate for next input
 
 calcBody.addEventListener("click", function(event){
     if(event.target.textContent === "C"){
-        input.value = "0";
-        inputMini.value = "0";
         clearAll()
     }
     /////////////////////////////////////////////////////////////////////////////                                                                                
@@ -528,6 +528,9 @@ function clearAll(){
             percentButton.classList.remove("highLight");
             operation = "";
             firstOperand = "";
+            secondOperand = "";
+            input.value = "0";
+            inputMini.value = "0";
             
 }
 
